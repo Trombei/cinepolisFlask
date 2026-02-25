@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="movie-details">
+    <img src="{{ peli.poster }}" alt="{{ peli.titulo }}" class="poster-large">
+    <div class="info">
+        <h1>{{ peli.titulo }}</h1>
+        <p class="sinopsis">{{ peli.sinopsis }}</p>
+        <p class="precio">Precio por boleto: <strong>$12 USD</strong></p>
+        <a href="{{ url_for('buy', movie_id=peli.id) }}" class="btn-comprar">Comprar Boletos</a>
+    </div>
+</div>
+{% endblock %}

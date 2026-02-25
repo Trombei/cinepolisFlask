@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="title">Cartelera Disponible</h1>
+<div class="grid-cartelera">
+    {% for peli in peliculas %}
+    <a href="{{ url_for('movie', movie_id=peli.id) }}" class="card-peli">
+        <img src="{{ peli.poster }}" alt="{{ peli.titulo }}">
+        <h3>{{ peli.titulo }}</h3>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}
