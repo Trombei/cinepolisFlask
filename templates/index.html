@@ -1,12 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
-<h1 class="title">Cartelera Disponible</h1>
-<div class="grid-cartelera">
+<h1 class="text-3xl font-extrabold text-center mb-10 text-gray-900">Cartelera Disponible</h1>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
     {% for peli in peliculas %}
-    <a href="{{ url_for('movie', movie_id=peli.id) }}" class="card-peli">
-        <img src="{{ peli.poster }}" alt="{{ peli.titulo }}">
-        <h3>{{ peli.titulo }}</h3>
-    </a>
+    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow flex flex-col transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
+        <a href="{{ url_for('movie', movie_id=peli.id) }}">
+            <img class="rounded-t-lg w-full h-auto object-cover aspect-[2/3]" src="{{ peli.poster }}" alt="{{ peli.titulo }}" />
+        </a>
+        <div class="p-5 flex-grow flex flex-col justify-between">
+            <a href="{{ url_for('movie', movie_id=peli.id) }}">
+                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">{{ peli.titulo }}</h5>
+            </a>
+            <a href="{{ url_for('movie', movie_id=peli.id) }}" class="inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 mt-4">
+                Ver detalles
+                <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                </svg>
+            </a>
+        </div>
+    </div>
     {% endfor %}
 </div>
 {% endblock %}
